@@ -5,9 +5,6 @@ import { getUser } from './UserApi';
 import { useQuery } from '@tanstack/vue-query';
 import { MaybeRef } from '../types';
 
-
-defineProps<{ msg: string }>()
-
 const userId = ref<string>("")
 
 const userQueries = createQueryKeys('users', {  
@@ -18,16 +15,15 @@ const userQueries = createQueryKeys('users', {
   }),
 });
 
-var { data, isLoading, status } = useQuery({
+var { data, isLoading, status  } = useQuery({
   ...userQueries.detail(userId),
   enabled: computed((() => !!userId.value))
 });
 </script>
 
-<template>
-  <h1>{{ msg }}</h1>
+<template>  
   <input v-model="userId" placeholder="Userid."/>
-  <div>{{ status }}</div>
+  <div>Status: {{ status }}</div>
   <div v-if="isLoading">loading</div>
   <div v-else> {{ data }}</div>  
 </template>
