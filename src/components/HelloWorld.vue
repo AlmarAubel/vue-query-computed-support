@@ -11,10 +11,10 @@ const userQueries = createQueryKeys('users', {
   detail: (userId: MaybeRef<string>) => ({
     queryKey: [userId],
     queryFn: () => getUser(unref(userId)),
-
   }),
 });
 
+//The query will only load when the user entered a userId
 var { data, isLoading, status  } = useQuery({
   ...userQueries.detail(userId),
   enabled: computed((() => !!userId.value))
