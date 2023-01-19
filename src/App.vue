@@ -12,11 +12,11 @@ import HelloWorldMutation from "./components/HelloWorldMutation.vue";
 <template>  
 <!-- <HelloWorldSimple />-->
 <!--  <hello-world-invalidate/>-->
-  <hello-world-mutation/>
+ <hello-world-mutation/>
   <hr/>
-<!--  <hello-world-with-query-keys/>-->
+<!--<hello-world-with-query-keys/>-->
 <!--  <hr/>-->
-<!--  <hello-world-with-enabled/>-->
+<!--<hello-world-with-enabled/>-->
   
   
 </template>

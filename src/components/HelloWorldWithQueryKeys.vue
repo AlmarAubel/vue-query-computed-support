@@ -16,7 +16,7 @@ const userQueries = createQueryKeys('users', {
 
 //The query will only load when the user entered a userId
 var { data, isLoading, status,isFetching , isStale } = useQuery({
-  ...userQueries.detail(userId),  
+  ...userQueries.detail(userId),
 });
 </script>
 

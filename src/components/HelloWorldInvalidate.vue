@@ -17,10 +17,10 @@ const userQueries = createQueryKeys('users', {
 
 const reset = ()=>{
   console.log("reset",userQueries._def);
-  queryClient.invalidateQueries(userQueries._def)
+  queryClient.invalidateQueries(["users"])
 }
 
-var {data, isLoading, status, isFetching, isStale} = useQuery({
+var {data, isLoading, status, isFetching, isStale, refetch} = useQuery({
   ...userQueries.detail(userId),
   enabled: computed((() => !!userId.value))
 });

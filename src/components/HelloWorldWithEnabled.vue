@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/vue-query';
 import { MaybeRef } from '../types';
 
 const userId = ref<string>("")
-
+const enabled = computed((() => !!userId.value));
 const userQueries = createQueryKeys('users', {  
   detail: (userId: MaybeRef<string>) => ({
     queryKey: [userId],
@@ -17,7 +17,7 @@ const userQueries = createQueryKeys('users', {
 //The query will only load when the user entered a userId
 var {data, isLoading, status, isFetching, isStale} = useQuery({
   ...userQueries.detail(userId),
-  enabled: computed((() => !!userId.value))
+  enabled
 });
 </script>
 

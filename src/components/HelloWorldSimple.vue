@@ -3,11 +3,13 @@ import {getUser} from './UserApi';
 import {useQuery} from '@tanstack/vue-query';
 
 const userId = "1";
-//staleTime: 1000 * 6
+//
 
 var {data, isLoading, status, isFetching, isStale} = useQuery({
   queryKey: ["users", userId],
-  queryFn: () => getUser(userId)
+  queryFn: () => getUser(userId),
+  select: resp => resp,
+  staleTime: 1000 * 6
 });
 </script>
 
