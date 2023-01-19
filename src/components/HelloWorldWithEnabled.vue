@@ -15,17 +15,22 @@ const userQueries = createQueryKeys('users', {
 });
 
 //The query will only load when the user entered a userId
-var { data, isLoading, status  } = useQuery({
+var {data, isLoading, status, isFetching, isStale} = useQuery({
   ...userQueries.detail(userId),
   enabled: computed((() => !!userId.value))
 });
 </script>
 
-<template>  
+<template>
+  <h1>Enabled</h1>
   <input v-model="userId" placeholder="Userid."/>
-  <div>Status: {{ status }}</div>
+  <div>status: {{ status }}</div>
+  <div>isFetching: {{ isFetching ? "🟢": "🚫"  }}</div>
+  <div>freshness: {{ isStale ? "Stale" : "fresh" }}</div>
   <div v-if="isLoading">loading</div>
-  <div v-else> {{ data }}</div>  
+  <div v-else>
+    <pre>{{ data }} </pre>
+  </div>
 </template>
 
 <style scoped>
